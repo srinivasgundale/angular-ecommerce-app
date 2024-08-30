@@ -25,8 +25,8 @@ export class CartPage implements OnInit {
   }
 
   // Remove item from cart
-  removeItem(productId: number) {
-    this.cartService.removeFromCart(productId);
+  removeItem(product: Product) {
+    this.cartService.removeFromCart(product);
     this.cartItems = this.cartService.getCart();  // Refresh cart items
   }
 
@@ -36,3 +36,5 @@ export class CartPage implements OnInit {
     this.cartItems = [];
   }
 }
+
+

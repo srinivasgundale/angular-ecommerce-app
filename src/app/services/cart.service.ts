@@ -1,34 +1,31 @@
 // src/app/services/cart.service.ts
 
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Product } from '../interfaces/product.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private cart: Product[] = [];  // Array to hold cart items
+  private cart: Product[] = [];
+  private cartItemCount = new BehaviorSubject<number>(0);
 
   constructor() {}
 
-  // Add a product to the cart
-  addToCart(product: Product) {
-    const existingProduct = this.cart.find(item => item.id === product.id);
-    if (existingProduct) {
-      // If the product is already in the cart, increase its quantity
-      existingProduct.quantity! += 1;
-    } else {
-      // If the product is not in the cart, add it with quantity 1
-      this.cart.push({ ...product, quantity: 1 });
-    }
-  }
-
-  // Get all items in the cart
-  getCart(): Product[] {
+  getCart() {
     return this.cart;
   }
 
-  // Update the quantity of a product in the cart
+  getCartItemCount() {
+    return this.cartItemCount.asObservable();
+  }
+
+  addToCart(product: Product) {
+    this.cart.push(product);
+    this.cartItemCount.next(this.cart.length);
+  }
+
   updateCart(productId: number, quantity: number) {
     const product = this.cart.find(item => item.id === productId);
     if (product) {
@@ -36,17 +33,19 @@ export class CartService {
     }
   }
 
-  // Remove a product from the cart
-  removeFromCart(productId: number) {
-    this.cart = this.cart.filter(item => item.id !== productId);
+  removeFromCart(product: Product) {
+    const index = this.cart.indexOf(product);
+    if (index > -1) {
+      this.cart.splice(index, 1);
+      this.cartItemCount.next(this.cart.length);
+    }
   }
 
-  // Clear the entire cart
   clearCart() {
     this.cart = [];
+    this.cartItemCount.next(this.cart.length);
   }
 
-  // Get the total price of items in the cart
   getTotalPrice(): number {
     return this.cart.reduce((total, item) => total + (item.price * item.quantity!), 0);
   }

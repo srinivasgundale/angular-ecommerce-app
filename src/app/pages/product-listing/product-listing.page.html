@@ -1,5 +1,5 @@
 <!-- src/app/pages/product-listing/product-listing.page.html -->
-
+<app-header></app-header>
 <ion-header>
   <ion-toolbar>
     <ion-title>Product Listing</ion-title>
@@ -8,8 +8,8 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let product of products" [routerLink]="['/product-detail', product.id]">
-      <ion-thumbnail slot="start">
+    <ion-item *ngFor="let product of products" >
+      <ion-thumbnail slot="start" [routerLink]="['/product-detail', product.id]">
         <img [src]="product.thumbnail" alt="{{ product.title }}">
       </ion-thumbnail>
       <ion-label>
