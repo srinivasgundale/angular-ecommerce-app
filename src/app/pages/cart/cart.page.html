@@ -10,6 +10,15 @@
         <ion-label>
           <h2>{{ item.title }}</h2>
           <p>{{ item.price | currency }}</p>
+
+          <!-- Quantity Controls -->
+          <div>
+            <ion-button color="light" (click)="decreaseQuantity(item)">-</ion-button>
+            <ion-input [(ngModel)]="item.quantity" type="number" min="1"></ion-input>
+            <ion-button color="light" (click)="increaseQuantity(item)">+</ion-button>
+          </div>
+
+          <p>Total: {{ item.price * item.quantity | currency }}</p>
           <ion-button color="danger" (click)="removeItem(item)">Remove</ion-button>
         </ion-label>
       </ion-item>

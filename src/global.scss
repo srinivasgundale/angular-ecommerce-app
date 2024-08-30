@@ -36,4 +36,40 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
 
+/* src/global.scss */
+
+.header-logo {
+  height: 40px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+ion-title {
+  display: flex;
+  align-items: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+ion-badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+ion-footer {
+  text-align: center;
+  padding: 10px 0;
+}
+
+ion-footer ion-button {
+  --padding-start: 0;
+  --padding-end: 0;
+  font-size: 14px;
+}
 

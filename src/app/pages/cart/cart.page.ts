@@ -30,11 +30,24 @@ export class CartPage implements OnInit {
     this.cartItems = this.cartService.getCart();  // Refresh cart items
   }
 
+  increaseQuantity(item: Product) {
+    item.quantity = (item.quantity || 1) + 1;
+    this.cartService.updateCart(item.id, item.quantity);
+  }
+
+  decreaseQuantity(item: Product) {
+    if (item.quantity && item.quantity > 1) {
+      item.quantity -= 1;
+      this.cartService.updateCart(item.id, item.quantity);
+    }
+  }
+
   // Clear the cart
   clearCart() {
     this.cartService.clearCart();
     this.cartItems = [];
   }
+
 }
 
 
