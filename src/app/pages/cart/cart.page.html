@@ -1,0 +1,29 @@
+<!-- src/app/pages/cart/cart.page.html -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Your Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="cartItems.length > 0">
+    <ion-item *ngFor="let item of cartItems">
+      <ion-label>
+        <h2>{{ item.title }}</h2>
+        <p>Price: {{ item.price | currency }}</p>
+        <p>Quantity:
+          <ion-input type="number" [(ngModel)]="item.quantity" (ionChange)="updateQuantity(item.id, item.quantity ?? 1)">
+          </ion-input>
+        </p>
+      </ion-label>
+      <ion-button color="danger" (click)="removeItem(item.id)">Remove</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-label>Total Price: {{ totalPrice | currency }}</ion-label>
+  </ion-item>
+
+  <ion-button expand="full" color="danger" (click)="clearCart()">Clear Cart</ion-button>
+</ion-content>

@@ -1,0 +1,13 @@
+<!-- src/app/app.component.html or src/app/components/header/header.component.html -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>My E-Commerce</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/cart']">
+        <ion-icon name="cart-outline"></ion-icon>
+        <ion-badge *ngIf="cartItemCount > 0" color="danger">{{ cartItemCount }}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
