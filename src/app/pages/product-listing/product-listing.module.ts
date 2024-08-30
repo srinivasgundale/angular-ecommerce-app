@@ -5,14 +5,14 @@ import { IonicModule } from '@ionic/angular';
 
 import { ProductListingPageRoutingModule } from './product-listing-routing.module';
 import { ProductListingPage } from './product-listing.page';
-import { HeaderModule } from '../../components/header/header.module';
+import { LayoutModule } from 'src/app/components/layout/layout.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     ProductListingPageRoutingModule,
-    HeaderModule
+    LayoutModule
   ],
   declarations: [ProductListingPage]
 })

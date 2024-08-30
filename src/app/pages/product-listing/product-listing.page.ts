@@ -38,6 +38,19 @@ export class ProductListingPage implements OnInit {
 
   addToCart(product: Product) {
     this.cartService.addToCart(product);
-    alert(`${product.title} has been added to your cart.`);
+    //alert(`${product.title} has been added to your cart.`);
+  }
+  isInCart(productId: number) {
+    return this.cartService.isInCart(productId);
+  }
+
+  toggleCartItem(product: any) {
+    console.log("🚀 ~ ProductListingPage ~ toggleCartItem ~ product:", product)
+
+    if (this.isInCart(product.id)) {
+      this.cartService.removeFromCart(product);
+    } else {
+      this.cartService.addToCart(product);
+    }
   }
 }

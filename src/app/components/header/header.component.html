@@ -2,7 +2,12 @@
 
 <ion-header>
   <ion-toolbar>
-    <ion-title>My E-Commerce</ion-title>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/">
+        <img src="assets/logo.png" alt="Logo" style="height: 40px;" />
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Ionic</ion-title>
     <ion-buttons slot="end">
       <ion-button [routerLink]="['/cart']">
         <ion-icon name="cart-outline"></ion-icon>

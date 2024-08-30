@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { ProductDetailPage } from './product-detail.page';
+import { LayoutModule } from 'src/app/components/layout/layout.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    LayoutModule,
     RouterModule.forChild([
       {
         path: '',

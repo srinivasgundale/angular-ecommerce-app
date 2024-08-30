@@ -49,4 +49,7 @@ export class CartService {
   getTotalPrice(): number {
     return this.cart.reduce((total, item) => total + (item.price * item.quantity!), 0);
   }
+  isInCart(productId: number) {
+    return this.cart.find(item => item.id === productId);
+  }
 }

@@ -34,6 +34,6 @@ export class ProductDetailPage implements OnInit {
   addToCart(product: Product) {
     // Assuming you have a CartService that handles cart operations
     this.cartService.addToCart(product);
-    alert(`${product.title} has been added to your cart.`);
+    //alert(`${product.title} has been added to your cart.`);
   }
 }
